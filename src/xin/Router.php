@@ -18,7 +18,7 @@ class Router
 			return strip_tags(htmlspecialchars(stripslashes($arg)));
 		}, array_slice($patharr, 3));
 
-        $controller = '\app\\' . $app . '\\' . $ctrl;
+        $controller = '\app\\' . $app . '\\controller\\' . $ctrl;
         if (!class_exists($controller)) {
 			throw new \Exception($controller.'控制器不存在');
 		}
