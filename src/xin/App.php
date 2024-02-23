@@ -32,14 +32,14 @@ class App
     public function getPath(string $name = 'root'):string
     {
         if(!isset($this->path[$name])){
-            $root = dirname(__DIR__,4).DIRECTORY_SEPARATOR;
+            $root = dirname(__DIR__,5).DIRECTORY_SEPARATOR;
             $arrpath = [
                 'root'  => $root,
                 'xin'   => __DIR__.DIRECTORY_SEPARATOR
             ];
             $path = $root.$name.DIRECTORY_SEPARATOR;
-            if(!is_dir($path)) throw new \Exception($path.'目录获取异常');
             $this->path[$name] = $arrpath[$name] ?? $path;
+            if(!is_dir($this->path[$name])) throw new \Exception($path.'目录获取异常');
         }
         return $this->path[$name];
     }
