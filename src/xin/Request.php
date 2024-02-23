@@ -7,7 +7,7 @@ class Request
     private $server;
     private $path;
     private $query;
-    private $s;
+    private $urlPath;
 
     private function __construct()
     {
@@ -26,16 +26,16 @@ class Request
         $s = $_GET['s'] ?? 'index';
         $s = !empty($s)?$s:'index';
         $s = trim(trim($s,' '),'/');
-        $this->s = $s;
+        $this->urlPath = $s;
     }
-    public function getSparams(){
-        return $this->s;
+    public function parsePath(){
+        return $this->urlPath;
     }
     protected function pathinfo()
     {
         $this->server = $_SERVER;
         $url = parse_url($_SERVER['REQUEST_URI']);
-        $this->path   = $url['path'];
+        $this->urlPath   = $url['path'];
         $this->query  = $url['query'];
     }
 
