@@ -1,0 +1,2 @@
+# simple-class
+simple-class
