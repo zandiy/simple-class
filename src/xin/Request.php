@@ -36,6 +36,9 @@ class Request
         $this->server = $_SERVER;
         $url = parse_url($_SERVER['REQUEST_URI']);
         $this->urlPath   = $url['path'];
+        if($url['path'] ===  '/'){
+            $this->urlPath = 'index';
+        }
         $this->query  = $url['query'];
     }
 
