@@ -7,7 +7,7 @@ class Router
     public static function alloc()
     {
         $path = (Request::getInstance())->parsePath();
-        $patharr = explode('/', $path);
+        $patharr = explode('/', trim($path,'/'));
         $patharr = array_map('strtolower',$patharr);
 
         $app    = $patharr[0] ?? 'index';
